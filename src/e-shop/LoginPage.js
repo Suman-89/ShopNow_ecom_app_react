@@ -77,7 +77,7 @@ const LoginPage = () => {
                     </CardContent>
                     <CardActions>
                         {/* <Button size="small">Learn More</Button> */}
-                        <Button variant="text" style={{ margin: '0 auto 0' }}>Register</Button>
+                        <Button variant="text" style={{ margin: '0 auto 0' }}>Register Now</Button>
                         <Button variant="contained" style={{ margin: '0 auto 0' }}>Sign in</Button>
                     </CardActions>
                 </Card>
