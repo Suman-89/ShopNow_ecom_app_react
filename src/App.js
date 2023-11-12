@@ -1,10 +1,14 @@
 import './App.css';
+import ToastMessageComp from './components/ToastMessageComp';
+import DashboardPage from './e-shop/DashboardPage';
 import LoginPage from './e-shop/LoginPage';
 
 function App() {
   return (
     <div className='App'>
-      <LoginPage />
+      <ToastMessageComp/>
+      {/* <LoginPage /> */}
+      <DashboardPage/>
     </div>
   );
 }
