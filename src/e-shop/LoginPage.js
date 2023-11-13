@@ -64,15 +64,13 @@ const LoginPage = () => {
                 console.log('response-->',res);
                 if(res.status === 201){
                     localStorage.setItem("userData",JSON.stringify(res.data.user));
+                    window.location.reload();
                 }
             }).catch(e => console.log('error-->',e));
         }
 
     }
-    const getUser  = JSON.parse(localStorage.getItem("userData"));
-    console.log(
-        'get user -->',getUser
-    )
+    
     return (
         <div className='loginMain'>
             <div className="container">
@@ -132,7 +130,6 @@ const LoginPage = () => {
                         >
                             Sign in
                         </Button>
-                        <Link to='/dashboard'>dashboard</Link>
                     </CardActions>
                 </Card>
             </div>

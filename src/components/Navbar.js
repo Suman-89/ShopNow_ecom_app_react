@@ -3,7 +3,7 @@ import { AppBar, Box, Button, IconButton, Toolbar, Typography } from '@mui/mater
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -19,9 +19,14 @@ const Navbar = () => {
     }));
 
 
-  return (
-    <div>
-      <Box sx={{ flexGrow: 1 }}>
+    const logoutFunc = () => {
+        localStorage.removeItem("userData");
+        window.location.reload();
+    }
+
+    return (
+        <div>
+            <Box sx={{ flexGrow: 1 }}>
                 <AppBar position="static">
                     <Toolbar>
                         <IconButton
@@ -35,23 +40,23 @@ const Navbar = () => {
                                 style={{ width: '90px', height: '90px', borderRadius: '90px' }}
                             />
                         </IconButton>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{cursor:'pointer'}} onClick={()=>navigation('/')}>
+                        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} style={{ cursor: 'pointer' }} onClick={() => navigation('/')}>
                             Dashboard
                         </Typography>
-                        <IconButton aria-label="cart" style={{marginRight:'100px'}}>
+                        <IconButton aria-label="cart" style={{ marginRight: '100px' }} onClick={()=>navigation('/cart')}>
                             <StyledBadge badgeContent={4} color="secondary">
-                                <ShoppingCartIcon />
+                                <ShoppingCartIcon/>
                             </StyledBadge>
                         </IconButton>
-                        <Button color="inherit">
+                        <Button color="inherit" onClick={() => logoutFunc()}>
                             Logout
                         </Button>
                         {/* <Link to='/'>loginpage</Link> */}
                     </Toolbar>
                 </AppBar>
             </Box>
-    </div>
-  )
+        </div>
+    )
 }
 
 export default Navbar
