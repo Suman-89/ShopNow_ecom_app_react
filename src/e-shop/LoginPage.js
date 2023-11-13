@@ -13,6 +13,7 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import { baseUrlLogin } from '../config';
+import { Link } from 'react-router-dom';
 
 
 const bull = (
@@ -131,6 +132,7 @@ const LoginPage = () => {
                         >
                             Sign in
                         </Button>
+                        <Link to='/dashboard'>dashboard</Link>
                     </CardActions>
                 </Card>
             </div>
