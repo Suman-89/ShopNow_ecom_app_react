@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import Navbar from '../components/Navbar'
-import { Avatar, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, Grid, IconButton, Typography } from '@mui/material';
+import { Avatar, Button, Card, CardActions, CardContent, CardHeader, CardMedia, Collapse, Grid, IconButton, TextField, Typography } from '@mui/material';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -8,6 +8,9 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { styled } from '@mui/material/styles';
 import axios from 'axios';
 import { baseUrlLogin, shopUrl } from '../config';
+import { Search } from '@mui/icons-material';
+import SearchIcon from '@mui/icons-material/Search';
+import InputBase from '@mui/material/InputBase';
 
 const ExpandMore = styled((props) => {
     const { expand, ...other } = props;
@@ -19,6 +22,7 @@ const ExpandMore = styled((props) => {
         duration: theme.transitions.duration.shortest,
     }),
 }));
+
 
 const NewDashboard = () => {
 
@@ -32,7 +36,7 @@ const NewDashboard = () => {
 
     const getItems = () => {
         axios.get('https://api.escuelajs.co/api/v1/products').then((res) => {
-            console.log('response -->',res.data)
+            console.log('response -->', res.data)
             setShopItem(res.data)
         }).catch((e => console.log(e)))
     }
@@ -53,6 +57,11 @@ const NewDashboard = () => {
                     </h2>
                 </div>
                 <div className="conrainer my-5">
+                    <div className="row my-2" style={{ width: '40%', margin: '0 auto 0', backgroundColor:'whitesmoke', borderRadius:'8px' }}>
+                        <TextField className='m-2' id="filled-basic" label="Search here" variant="filled"/>&nbsp;
+                        <Button className='my-2' variant="contained">Reset</Button>
+                    </div>
+
                     <Grid sx={{ flexGrow: 1 }} container spacing={2}>
                         <Grid item xs={12}>
                             <Grid container justifyContent="center" spacing={spacing}>
@@ -81,7 +90,7 @@ const NewDashboard = () => {
                                             />
                                             <CardContent>
                                                 <Typography variant="body2" color="text.secondary">
-                                                {arrayValue.description}
+                                                    {arrayValue.description}
                                                 </Typography>
                                             </CardContent>
                                             <CardActions disableSpacing>
